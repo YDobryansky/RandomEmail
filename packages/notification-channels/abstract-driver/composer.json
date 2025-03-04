@@ -1,0 +1,40 @@
+{
+    "name": "notification-channels/abstract-driver",
+    "description": "Abstract Driver",
+    "homepage": "https://github.com/notification-channels/AbstractDriver",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "author_name",
+            "email": "example@example.com",
+            "homepage": "https://github.com/notification-channels/AbstractDriver",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=8.1",
+        "illuminate/notifications": "~6.0 || ~7.0 || ~8.0 || ~10.0",
+        "illuminate/support": "~6.0 || ~7.0 || ~8.0 || ~10.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "NotificationChannels\\AbstractDriver\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "NotificationChannels\\AbstractDriver\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test:coverage": "phpunit --coverage-text --coverage-clover=coverage.clover"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

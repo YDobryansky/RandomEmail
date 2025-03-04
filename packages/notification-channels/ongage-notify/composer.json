@@ -1,0 +1,51 @@
+{
+    "name": "notification-channels/ongage-notify",
+    "description": "Send notify by ongage",
+    "homepage": "https://github.com/notification-channels/ongage-notify",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "author_name",
+            "email": "example@example.com",
+            "homepage": "https://github.com/notification-channels/ongage-notify",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=8.1",
+        "illuminate/notifications": "~6.0 || ~7.0 || ~8.0 || ~10.0",
+        "illuminate/support": "~6.0 || ~7.0 || ~8.0 || ~10.0",
+        "notification-channels/abstract-driver": "dev-main"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "NotificationChannels\\OngageNotify\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "NotificationChannels\\OngageNotify\\Test\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "NotificationChannels\\OngageNotify\\OngageServiceProvider"
+            ],
+            "dont-discover": []
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test:coverage": "phpunit --coverage-text --coverage-clover=coverage.clover"
+    },
+    "config": {
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
