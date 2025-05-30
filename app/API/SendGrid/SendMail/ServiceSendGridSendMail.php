@@ -5,6 +5,7 @@ use App\API\Common\Exceptions\APIException;
 use App\API\Common\Interfaces\RequestInterface;
 use App\API\Common\Interfaces\ServiceInterface;
 use App\API\Common\Interfaces\SettingsInterface;
+use App\Models\Api;
 use Filament\Support\Colors\Color;
 
 class ServiceSendGridSendMail implements ServiceInterface
@@ -16,6 +17,9 @@ class ServiceSendGridSendMail implements ServiceInterface
         DTOSendGridSendMailSettings|SettingsInterface $settings,
         DTOSendGridSendMailRequest|RequestInterface   $request
     ): DTOSendGridSendMailResponse {
+        if (!$settings->getApiKey()) {
+            $settings->setApiKey(Api::getSettingValue(Api::SENDGRID, 'api_key'));
+        }
         return ApiSendGridSendMail::send($settings, $request);
     }
 
