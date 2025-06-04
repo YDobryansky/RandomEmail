@@ -1,4 +1,5 @@
 <x-filament::page>
+    @include('filament.customize.loading.spin')
     <h2 class="text-xl font-bold mb-4">Contact: {{ $contact }}</h2>
     <div class="space-y-2">
         @foreach($history as $item)

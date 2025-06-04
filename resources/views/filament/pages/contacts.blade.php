@@ -7,6 +7,7 @@
             @endforeach
         </select>
         <x-filament::button type="submit">Connect</x-filament::button>
+        @include('filament.customize.loading.spin')
     </form>
 
     @if($contacts)
@@ -18,7 +19,7 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
-                    @foreach($contacts as $contact)
+                    @forelse($contacts as $contact)
                         <tr>
                             <td class="px-4 py-2">
                                 <a href="{{ \App\Filament\Pages\ContactHistory::getUrl(['contactId' => $contact['id'] ?? $loop->index, 'gatewayId' => $gatewayId]) }}">
@@ -26,7 +27,11 @@
                                 </a>
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td class="px-4 py-2" colspan="1">No contacts found.</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
