@@ -50,6 +50,36 @@ class OngageApi
             ->send('POST', $this->url($this->url_contact), $options);
     }
 
+    /**
+     * Load contacts list
+     */
+    public function listContacts(int $page = 1, int $limit = 500): array
+    {
+        $options = $this->options();
+        $options['query'] = [
+            'page' => $page,
+            'limit' => $limit,
+        ];
+
+        $response = $this->getHttpClient()
+            ->send('GET', $this->url($this->url_contact), $options);
+
+        return $response->json('payload.contacts') ?? [];
+    }
+
+    /**
+     * Get contact activity
+     */
+    public function getContactHistory(string|int $contactId): array
+    {
+        $options = $this->options();
+
+        $response = $this->getHttpClient()
+            ->send('GET', $this->url($this->url_contact . '/' . $contactId . '/history'), $options);
+
+        return $response->json('payload') ?? [];
+    }
+
     public function url($url)
     {
         return rtrim($this->getSettings()->getBaseUrl(), '/')
