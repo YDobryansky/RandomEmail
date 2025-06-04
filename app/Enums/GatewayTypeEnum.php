@@ -4,7 +4,7 @@ namespace App\Enums;
 
 enum GatewayTypeEnum: string
 {
-    case Ongage = 'oengage';
+    case Ongage = 'ongage';
     case Telegram = 'telegram';
 
     public static function valueName(): array
